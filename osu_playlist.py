@@ -12,6 +12,7 @@ parser.parse_args()
 def get_songs():
     cur = ABSPATH_TO_SONGS
     songdirs = [i for i in [j for j in os.walk(cur)][0][1] if i.split()[0].isdigit()]
+    songdirs = [j for j in songdirs if [i for i in Path(os.path.join(cur,j)).glob("*.osu")]!=[] ]
     paths = [os.path.join(cur, i) for i in songdirs]
     audios = []
     osufiles = []
